@@ -10,7 +10,7 @@ nnoremap("<C-j>", "<C-w>j")
 nnoremap("<C-k>", "<C-w>k")
 
 -- Telescope
-nnoremap("<leader>t", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>")
+nnoremap("<leader>t", "<cmd>Telescope git_files<cr>")
 nnoremap("<c-t>", "<cmd>Telescope live_grep<cr>")
 
 -- Formatting
