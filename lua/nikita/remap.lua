@@ -8,6 +8,8 @@ nnoremap("<C-h>", "<C-w>h")
 nnoremap("<C-l>", "<C-w>l")
 nnoremap("<C-j>", "<C-w>j")
 nnoremap("<C-k>", "<C-w>k")
+nnoremap("<C-=>", "<cmd>lua require'dap'.toggle_breakpoint()<cr>")
+nnoremap("<C-+>", "<cmd>lua require'dap'.continue()<cr>")
 
 -- Telescope
 nnoremap("<leader>t", "<cmd>Telescope find_files<cr>")
