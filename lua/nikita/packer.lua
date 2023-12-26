@@ -7,10 +7,10 @@ return require('packer').startup(function(use)
     -- Packer can manage itself
     use 'wbthomason/packer.nvim'
     use 'folke/tokyonight.nvim'
-    use "lunarvim/darkplus.nvim"
+    use { "catppuccin/nvim", as = "catppuccin" }
 --    use { 'neoclide/coc.nvim', branch = 'release'}
     use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        'nvim-telescope/telescope.nvim', tag = '0.1.5',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
     use 'nvim-telescope/telescope-media-files.nvim'
@@ -21,21 +21,38 @@ return require('packer').startup(function(use)
         },
         tag = 'nightly' -- optional, updated every week. (see issue #1193)
     }
-    use "hrsh7th/nvim-cmp" -- The completion plugin
-    use "hrsh7th/cmp-buffer" -- buffer completions
-    use "hrsh7th/cmp-path" -- path completions
-    use "hrsh7th/cmp-cmdline" -- cmdline completions
-    use "saadparwaiz1/cmp_luasnip" -- snippet completions
-    use "hrsh7th/cmp-nvim-lsp"
-    use "simrat39/rust-tools.nvim"
     -- snippets
     use "L3MON4D3/LuaSnip" --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+    use "saadparwaiz1/cmp_luasnip" -- snippet completions
+    use "simrat39/rust-tools.nvim"
 
     -- LSP
-    use "neovim/nvim-lspconfig" -- enable LSP
-    use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-    use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+    use {
+      'VonHeikemen/lsp-zero.nvim',
+      branch = 'v3.x',
+      requires = {
+        {'williamboman/mason.nvim'},
+        {'williamboman/mason-lspconfig.nvim'},
+
+        -- LSP Support
+        {'neovim/nvim-lspconfig'},
+        -- Autocompletion
+        {'hrsh7th/nvim-cmp'},
+        {'hrsh7th/cmp-nvim-lsp'},
+        {'hrsh7th/cmp-buffer'},
+        {'L3MON4D3/LuaSnip'},
+        {'hrsh7th/cmp-path'}, -- path completions
+        {'hrsh7th/cmp-cmdline'} -- cmdline completions
+      }
+    }
+    -- install without yarn or npm
+    use({
+        "iamcco/markdown-preview.nvim",
+        run = function() vim.fn["mkdp#util#install"]() end,
+    })
+
+    use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
     -- Treesitter
     use {
@@ -44,6 +61,10 @@ return require('packer').startup(function(use)
     }
     use "p00f/nvim-ts-rainbow"
     use "nvim-treesitter/playground"
+
+    -- Debugger
+    use 'mfussenegger/nvim-dap'
+    use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
     use "numToStr/Comment.nvim" -- Easily comment stuff
     use 'JoosepAlviste/nvim-ts-context-commentstring'

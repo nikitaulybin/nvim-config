@@ -10,11 +10,9 @@ nnoremap("<C-j>", "<C-w>j")
 nnoremap("<C-k>", "<C-w>k")
 
 -- Telescope
-nnoremap("<leader>t", "<cmd>Telescope git_files<cr>")
+nnoremap("<leader>t", "<cmd>Telescope find_files<cr>")
 nnoremap("<c-t>", "<cmd>Telescope live_grep<cr>")
 
--- Formatting
-nnoremap("<leader>f", "<cmd>Format<cr>")
 
 -- Buffers
 nnoremap("H", "<cmd>BufferLineCyclePrev<cr>")

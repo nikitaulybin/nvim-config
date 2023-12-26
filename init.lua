@@ -1,2 +1,2 @@
 require("nikita")
-print("first hello")
+vim.opt.clipboard='unnamed'
