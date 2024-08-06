@@ -15,11 +15,10 @@ return require('packer').startup(function(use)
     }
     use 'nvim-telescope/telescope-media-files.nvim'
     use {
-        'kyazdani42/nvim-tree.lua',
-        requires = {
-            'kyazdani42/nvim-web-devicons', -- optional, for file icons
-        },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+      'nvim-tree/nvim-tree.lua',
+      requires = {
+        'nvim-tree/nvim-web-devicons', -- optional
+      },
     }
     -- snippets
     use "L3MON4D3/LuaSnip" --snippet engine
@@ -63,6 +62,7 @@ return require('packer').startup(function(use)
     use "nvim-treesitter/playground"
 
     -- Debugger
+    use { "nvim-neotest/nvim-nio" }
     use 'mfussenegger/nvim-dap'
     use { "rcarriga/nvim-dap-ui", requires = {"mfussenegger/nvim-dap"} }
 
